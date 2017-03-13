@@ -22,11 +22,22 @@ public class Test {
     } else{
       System.out.println("You have worked for " + totalHours + " hours so far. You have some explaining to do.");
     }
+    // The third way (DRYest)
+    Integer twoDays3 = getHours("two days ago");
+    Integer yesterday3 = getHours("yesterday");
+    Integer today3 = getHours("today");
+    Integer totalHours3 = calculateTotalHours(twoDays3, yesterday3, today3);
+    if(totalHours3 > 1){
+      System.out.println("You have worked for " + totalHours3 + " hours so far. Great job, you hard worker you!");
+    } else{
+      System.out.println("You have worked for " + totalHours3 + " hours so far. You have some explaining to do.");
+    }
   }
 
-  // public static void printMyName(){
-  //   System.out.println("Who am I?");
-  // }
+
+  public static void printMyName(){
+    System.out.println("Who am I?");
+  }
 
   public static void printXtimes(String str, int x){
     for (int i = 0; i<x; i++){
@@ -57,11 +68,19 @@ public class Test {
     return true;
   }
 
+  public static Integer getHours(String day){
+    System.out.println("Got here");
+    Console myConsole = System.console();
+    System.out.println("How many hours did you work " + day + "?");
+    Integer hours = Integer.parseInt(myConsole.readLine());
+    return hours;
+  }
+
   public static void calculateAndReportTotalHours() {
     Console myConsole = System.console();
     System.out.println("How many hours did you work two days ago?");
     String twoDaysAgo = myConsole.readLine();
-    System.out.println("Resulting input is " + twoDaysAgo);
+    // System.out.println("Resulting input is " + twoDaysAgo);
     System.out.println("How many hours did you work yesterday?");
     String yesterday = myConsole.readLine();
     System.out.println("How many hours did you work so far today?");
